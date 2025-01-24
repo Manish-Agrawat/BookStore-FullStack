@@ -1,3 +1,3 @@
-const baseUrl = "http://localhost:5000";
+const baseUrl = "https://bookstore-fullstack-z8t9.onrender.com";
 
 export default baseUrl;
