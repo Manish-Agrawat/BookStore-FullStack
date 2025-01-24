@@ -2,7 +2,7 @@ import axios from "axios";
 import baseUrl from "../src/components/Url";
 
 
-export async function authToken() {
+export  async function authToken() {
   try {
     const response = await axios.get(`${baseUrl}/api/users/token-verify`, {
       withCredentials: true,

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { authToken } from "../../utils/Authtoken";
 
 function Cards({ item }) {
   const [showMore, setShowMore] = useState(false);
@@ -7,6 +8,13 @@ function Cards({ item }) {
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
+  const [isValid , setIsValid ] = useState(false);
+
+  async function isValid(){
+    const res=await authToken();
+    setIsValid(res.valid);
+  }
+  isValid();
 
   return (
     <>
@@ -48,7 +56,7 @@ function Cards({ item }) {
             <div className="card-actions justify-between mt-4">
               <div className="badge badge-outline text-lg">${item.price}</div>
               <Link
-                to="/buy"
+                to={isValid ? "/buy" : "/login"}
                 state={{
                   title: item.title,
                   author: item.author,
